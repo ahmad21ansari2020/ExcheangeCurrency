@@ -25,7 +25,7 @@ namespace Excheange
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<ICurrencyConverter,CurrencyConverter>();
+            services.AddSingleton<ICurrencyConverter, CurrencyConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,8 +51,10 @@ namespace Excheange
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Exchange}/{action=Index}/{id?}");
+                //endpoints.MapRazorPages();
             });
         }
     }

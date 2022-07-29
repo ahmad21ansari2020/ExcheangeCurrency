@@ -1,0 +1,29 @@
+﻿@using Excheange.Models
+@model ExcheangeModel
+<div class="container">
+    <form>
+        <label class="label">Amount</label>
+        <input class="form-control" name="Amount" id="amount" type="text" />
+
+        <label class="label" name="From">From</label>
+        <select class="form-control" id="from">
+            @foreach (var item in Model.CurrencyList)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+
+        <label class="label" name="To">To</label>
+        <select class="form-control" id="to">
+            @foreach (var item in Model.CurrencyList)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+        <br />
+        <input type="button" class='btn btn-outline-success' onclick="sendData()" value="Convert" />
+    </form>
+    <hr />
+    <div class="alert alert-info" id="res"></div>
+</div>
+
